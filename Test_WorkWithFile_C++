@@ -1,0 +1,42 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+#include <fstream>
+#include <math.h>
+#include <cstring>
+using namespace std;
+
+int main()
+{
+    int i;
+    float a;
+    float summa=0;
+    int itog;
+    float MAX;
+    ifstream fin("2.txt");
+    for(int g=0;g<989;g++){
+        i++;
+        fin>>a;
+        if(a<=120){
+            summa+=a;
+        }else if((a>120) && (i%2==0)){
+            if(a>MAX){
+                MAX=a;
+            }
+            summa=summa+(a/100)*75;
+        }else if((a>120) && (i%2!=0)){
+            summa=summa+a;
+        }
+    }
+    fin.close();
+    itog=ceil(summa);
+    cout<<MAX<<endl;
+    cout<<itog;
+    return 0;
+}
