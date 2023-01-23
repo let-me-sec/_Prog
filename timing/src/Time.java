@@ -55,13 +55,13 @@ public class Time {
         if (hours > 24) {
             throw new IllegalArgumentException("Вы ввели больше, чем 24 часа");
         }
-        if (minutes > 60)
+        if (minutes >= 60)
         {
             throw new IllegalArgumentException("Вы ввели больше, чем 60 минут");
         }else if (hours == 24 || minutes != 0){
             this.minutes = 0;
         }
-        if (second > 60)
+        if (second >= 60)
         {
             throw new IllegalArgumentException("Вы ввели больше, чем 60 секунд");
         }else if (hours == 24 || second != 0){
