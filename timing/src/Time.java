@@ -15,36 +15,40 @@ public class Time {
     }
     public void realTime(){
         if(hours == 0){
-            exception++;
+            this.exception++;
             System.out.print("00" + ":");
         }else if(hours > 0){
             System.out.print(hours + ":");
         }
         if (minutes == 0) {
-            exception++;
+            this.exception++;
             System.out.print("00" + ":");
-        }else if(minutes >0){
+        }else if(minutes > 0 && minutes <= 9){
+            System.out.print("0" + minutes + ":");
+        } else if (minutes > 10 && minutes < 60) {
             System.out.print(minutes + ":");
         }
         if (second == 0) {
-            exception++;
+            this.exception++;
             System.out.println("00");
-        }else if(second > 0){
+        } else if (second > 0 && second <=9) {
+            System.out.println("0" + second);
+        }else if(second > 10 && second < 60){
             System.out.println(second);
         }
     }
     public void createTimeBySec (int sec) {
         this.ALL = sec;
-        second = sec % 60;
-        minutes = sec / 60;
+        this.second = sec % 60;
+        this.minutes = sec / 60;
         while (minutes >= 60){
             if(hours>=24){
                 this.minutes = 0;
                 this.second = 0;
                 break;
             }else {
-                minutes -= 60;
-                hours++;
+                this.minutes -= 60;
+                this.hours++;
             }
         }
     }
@@ -58,13 +62,13 @@ public class Time {
         if (minutes >= 60)
         {
             throw new IllegalArgumentException("Вы ввели больше, чем 60 минут");
-        }else if (hours == 24 || minutes != 0){
+        }else if (hours == 24 && minutes != 0){
             this.minutes = 0;
         }
         if (second >= 60)
         {
             throw new IllegalArgumentException("Вы ввели больше, чем 60 секунд");
-        }else if (hours == 24 || second != 0){
+        }else if (hours == 24 && second != 0){
             this.second = 0;
         }
         this.ALL = hours * 60 * 60 + minutes * 60 + second;
